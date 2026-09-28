@@ -1,0 +1,19 @@
+# Python 3.11
+# Instalación:  pip install -r requirements.txt
+
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.5
+scipy>=1.11
+matplotlib>=3.8
+
+xgboost>=2.0
+tensorflow>=2.16
+
+jupyter>=1.0
+ipykernel>=6.29
+
+# --- PyCaret: instalar en un entorno APARTE ---
+# conda create -n pycaret python=3.11 -y
+# conda activate pycaret
+# pip install pycaret
