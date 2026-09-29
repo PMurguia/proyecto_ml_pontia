@@ -9,8 +9,8 @@ from sklearn.metrics import precision_recall_curve
 from sklearn.metrics import ConfusionMatrixDisplay
 from sklearn.metrics import RocCurveDisplay
 import matplotlib.pyplot as plt
-from sklearn.pipeline import Pipeline          # CORREGIDO: era "Pipelines"
-from sklearn.base import clone                 # AÑADIDO: para independizar los pipelines
+from sklearn.pipeline import Pipeline          
+from sklearn.base import clone               
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OrdinalEncoder
