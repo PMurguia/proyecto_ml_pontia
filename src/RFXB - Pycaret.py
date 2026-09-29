@@ -7,7 +7,7 @@ df = pd.read_csv("data/raw/dataset_practica_final.csv")
 s = setup(
     data=df,
     target="is_canceled",
-    ignore_features=["reservation_status", "reservation_status_date"],
+    ignore_features=["reservation_status", "reservation_status_date"], #Marco como ignoradas las dos columnas con fuga. PyCaret no las detecta solo: sin esta línea todos los modelos dan AUC 1.0
     train_size=0.8,
     fold=5,
     session_id=42,
@@ -24,8 +24,9 @@ modelo_xgb_default = create_model("xgboost")
 
 # Modelos con los hiperparámetros elegidos por nosotros
 modelo_rf_entrenado  = create_model("rf",n_estimators=300,min_samples_leaf=2,max_depth=None,n_jobs=-1,random_state=42)
-modelo_xgb_entrenado = create_model("xgboost",n_estimators=300,learning_rate=0.05,max_depth=6,n_jobs=-1,random_state=42)
+modelo_xgb_entrenado = create_model("xgboost",n_estimators=300,learning_rate=0.1,max_depth=6,n_jobs=-1,random_state=42)
 
+# Búsqueda automática de hiperparámetros
 rf_tuned = tune_model(modelo_rf_default, optimize="AUC", n_iter=20)
 xgb_tuned = tune_model(modelo_xgb_default, optimize="AUC", n_iter=20)
 
@@ -45,4 +46,7 @@ comparacion = compare_models(include=[
     modelo_xgb_default,
     modelo_xgb_entrenado,
     xgb_tuned,
-])
+], sort="AUC")
+
+resultados = pull()
+print(resultados)

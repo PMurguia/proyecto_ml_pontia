@@ -59,7 +59,7 @@ modelo_rfc = Pipeline([
 
 modelo_xgb = Pipeline([
     ("preproceso", clone(preproceso)),
-    ("clasificador", XGBClassifier(n_estimators=300,learning_rate=0.05,
+    ("clasificador", XGBClassifier(n_estimators=300,learning_rate=0.1,
                                    max_depth=6,n_jobs=-1,random_state=42)),
 ])
 

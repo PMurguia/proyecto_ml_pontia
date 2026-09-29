@@ -56,12 +56,11 @@ nada. Fue la primera decisión del proyecto y condiciona todo lo demás.
 .
 ├── README.md
 ├── requirements.txt
+├── informe_final.md
 ├── .gitignore
 ├── data/
 │   └── raw/
 │       └── dataset_practica_final.csv
-├── docs/
-│   └── informe_final.md
 ├── src/
 │   ├── regresion_logistica_y_arbol_decisiones.py   # Jorge Pozo
 │   ├── red_neuronal.py                             # Peio Murguia
@@ -169,7 +168,7 @@ script.
 | Regresión logística | 0,7302 | 0,8182 | 0,8112 | 0,6639 | 0,8961 |
 | Árbol de decisión | 0,8111 | 0,8593 | 0,8066 | 0,8157 | 0,8528 |
 | Red neuronal (Keras) | 0,8123 | 0,8697 | 0,8708 | 0,7612 | 0,9454 |
-| XGBoost | 0,8229 | 0,8739 | 0,8577 | 0,7908 | 0,9490 |
+| XGBoost | 0,8368 | 0,8826 | 0,8625 | 0,8127 | 0,9543 |
 | Random Forest | 0,8486 | 0,8929 | 0,8904 | 0,8105 | 0,9595 |
 | *Dummy (referencia)* | 0,0000 | 0,6296 | 0,0000 | 0,0000 | 0,5000 |
 
