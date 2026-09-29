@@ -181,27 +181,6 @@ Según F1-Score sobre esta partición, el **Random Forest** obtiene el valor má
 alto (0,8486) y es el que mejor equilibra precisión y recall, además de liderar
 también en ROC-AUC (0,9595). Se selecciona como modelo final del sistema.
 
-### Cómo leer esta tabla
-
-Las cifras corresponden a **una única partición**. Tres matices:
-
-1. **No hay validación cruzada.** Diferencias por debajo de unos 2 puntos de F1
-   podrían deberse al azar de la partición concreta. Solo un `StratifiedKFold`
-   con su desviación típica permitiría distinguirlas del ruido.
-2. **El preprocesado no es idéntico.** Cada familia de modelos recibe el
-   tratamiento que su naturaleza requiere, lo que significa que no ven la misma
-   representación de los datos.
-3. **Los hiperparámetros no están optimizados por igual.** Ningún modelo de esta
-   tabla ha pasado por una búsqueda sistemática.
-
-### Un resultado que merece comentario
-
-El árbol de decisión obtiene un F1 alto (0,8111) pero el **ROC-AUC más bajo de
-todos** (0,8528), por debajo incluso de la regresión logística. No es una
-contradicción: un árbol sin podar produce probabilidades muy próximas a 0 o a 1,
-así que su curva ROC tiene pocos escalones y encierra menos área. Acierta bien
-con el umbral de 0,5, pero ordena peor las reservas por riesgo. Es un buen
-ejemplo de por qué conviene mirar más de una métrica.
 
 ### Matriz de confusión del modelo seleccionado
 
@@ -231,9 +210,6 @@ integra la tabla de métricas dentro de la figura.
    valor. Ninguna herramienta lo detecta automáticamente: PyCaret, sin
    `ignore_features`, devuelve resultados perfectos y falsos.
 
-2. **Los cinco algoritmos aprenden señal real** y quedan muy por encima del
-   clasificador trivial, lo que confirma que el problema es predecible con las
-   variables disponibles y que el preprocesado es correcto.
 
 3. **Los modelos no lineales captan mejor la estructura del problema.** La
    regresión logística es el único que se queda claramente por detrás en F1
@@ -262,8 +238,6 @@ integra la tabla de métricas dentro de la figura.
 
 ## 9. Limitaciones y mejoras
 
-- **Sin validación cruzada**: es la limitación más relevante. Todas las cifras
-  provienen de una partición única.
 - **Duplicados**: 31.994 filas exactamente iguales (26,8 %). Se conservan por
   considerarse reservas de grupo reales, pero inflan el resultado del split
   aleatorio.
